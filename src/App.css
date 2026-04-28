@@ -1,0 +1,232 @@
+/* ================= 기본 ================= */
+html, body, #root {
+  margin: 0;
+  height: 100%;
+}
+
+/* ================= 배경 ================= */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #0b1f33;
+}
+
+/* ================= 로그인 박스 ================= */
+.login-box {
+  position: relative;
+  z-index: 2;
+
+  width: clamp(300px, 28vw, 420px);
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* ================= 타이틀 ================= */
+.login-box h1 {
+  font-size: 22px;
+  color: #e2e8f0;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ================= input ================= */
+.login-box input {
+  padding: 12px;
+  font-size: 14px;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+
+  outline: none;
+}
+
+.login-box input::placeholder {
+  color: #64748b;
+}
+
+.login-box input:focus {
+  border: 1px solid #6366f1;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+}
+
+/* ================= 버튼 ================= */
+.login-box button {
+  padding: 12px;
+  font-size: 14px;
+
+  border-radius: 8px;
+  border: none;
+
+  background: #6366f1;
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-box button:hover {
+  background: #4f46e5;
+}
+
+/* ================= 🐶 강아지 ================= */
+.dog {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+
+  width: 36px;
+  height: 36px;
+
+  pointer-events: none;
+  opacity: 0;
+}
+
+.login-box.loading .dog {
+  opacity: 1;
+  animation: dogWalk 3s linear forwards;
+}
+
+.dog .body {
+  width: 75%;
+  height: 75%;
+  background: #e2e8f0;
+  border-radius: 50%;
+  position: absolute;
+  top: 12%;
+  left: 12%;
+  animation: dogBounce 0.4s infinite;
+}
+
+.ear {
+  width: 25%;
+  height: 25%;
+  background: #e2e8f0;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+}
+.ear-left { left: 10%; }
+.ear-right { right: 10%; }
+
+.eye {
+  width: 8%;
+  height: 8%;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 40%;
+}
+.eye-left { left: 30%; }
+.eye-right { right: 30%; }
+
+.nose {
+  width: 10%;
+  height: 10%;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tail {
+  width: 25%;
+  height: 8%;
+  background: #e2e8f0;
+  position: absolute;
+  right: -10%;
+  top: 40%;
+  border-radius: 10px;
+
+  transform-origin: left;
+  animation: tailWag 0.2s infinite;
+}
+
+@keyframes tailWag {
+  0% { transform: rotate(20deg); }
+  50% { transform: rotate(-20deg); }
+  100% { transform: rotate(20deg); }
+}
+
+@keyframes dogWalk {
+  0%   { top: -30px; left: -30px; }
+  25%  { top: -30px; left: calc(100% - 10px); }
+  50%  { top: calc(100% - 10px); left: calc(100% - 10px); }
+  75%  { top: calc(100% - 10px); left: -30px; }
+  100% { top: -30px; left: -30px; }
+}
+
+@keyframes dogBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1) translateY(-4px); }
+  100% { transform: scale(1); }
+}
+
+/* ================= intro ================= */
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* 🔥 타이핑 스타일 */
+.hello {
+  font-size: clamp(40px, 6vw, 90px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #64ffda;
+
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.3;
+}
+
+/* 🔥 커서 */
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ================= main ================= */
+.main-content {
+  position: relative;
+  z-index: 2;
+  color: #e2e8f0;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: clamp(28px, 4vw, 56px);
+}
