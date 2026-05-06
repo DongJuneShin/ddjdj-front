@@ -230,3 +230,289 @@ html, body, #root {
 .main-content h1 {
   font-size: clamp(28px, 4vw, 56px);
 }
+
+/* =========================================
+   Main 전용
+========================================= */
+
+.main-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 왼쪽 7 */
+.main-left {
+  flex: 7;
+  background: #0b1f33;
+  display: flex;
+  align-items: center;
+  padding: clamp(30px, 6vw, 120px);
+  position: relative;
+  z-index: 1;
+}
+
+/* 오른쪽 3 */
+.main-right {
+  flex: 2;
+
+  padding-inline: clamp(18px, 2vw, 40px);
+
+  background: #F5F1E9;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 1;
+
+  transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+}
+
+/* 왼쪽 텍스트 */
+.main-left-content {
+  width: 100%;
+  max-width: 700px;
+}
+
+.main-left-content h1 {
+  font-size: clamp(48px, 8vw, 110px);
+  line-height: 1.05;
+  margin: 0 0 24px 0;
+  color: #ffffff;
+}
+
+.main-left-content p {
+  font-size: clamp(16px, 2vw, 28px);
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255,255,255,0.75);
+}
+
+/* 오른쪽 전체 */
+.main-right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(20px, 3vw, 50px);
+
+  width: 100%;
+  height: 100%;
+}
+
+/* blob 프레임 */
+.profile-wrap {
+  width: clamp(180px, 15vw, 222px);
+  height: clamp(220px, 24vw, 260px);
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hover */
+.profile-wrap:hover {
+  transform: translateY(-8px) rotate(2deg);
+}
+
+/* 이미지 */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* 오른쪽 텍스트 */
+.main-right-content h1 {
+  font-size: clamp(24px, 3vw, 48px);
+  color: #0b1f33;
+}
+
+/* 데스크탑에서는 메뉴 숨김 */
+.main-menu-btn,
+.main-side-menu {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+
+  .main-left {
+    flex: 1;
+    width: 100%;
+  }
+
+  .main-right {
+    display: none;
+  }
+
+  .main-menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 28px;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    transition: 0.3s ease;
+  }
+
+  .main-menu-btn:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .main-side-menu {
+    display: flex;
+
+    position: fixed;
+    top: 0;
+    right: -280px;
+
+    width: 280px;
+    height: 100vh;
+
+    background: #10263d;
+
+    transition: right 0.4s ease;
+
+    z-index: 99;
+
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+            -10px 0 30px rgba(0,0,0,0.25);
+  }
+
+  .main-side-menu.open {
+    right: 0;
+  }
+
+  .main-side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .main-side-menu li {
+    color: rgba(255,255,255,0.9);
+
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+  }
+
+  .main-side-menu li:hover {
+    color: white;
+    transform: translateX(6px);
+  }
+}
+
+/* 메뉴 리스트 */
+.main-menu-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  margin-top: 20px;
+
+  width: 100%;
+  align-items: center;
+}
+
+/* 메뉴 */
+.main-menu-item {
+  position: relative;
+
+  font-size: clamp(18px, 1.3vw, 24px);
+  font-weight: 500;
+
+  color: #0b1f33;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  padding: 8px 0;
+}
+
+/* 🔥 밑줄 효과 */
+.main-menu-item::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0%;
+  height: 2px;
+
+  background: #3E5879;
+
+  transition: 0.3s ease;
+}
+
+/* hover */
+.main-menu-item:hover {
+  color: #3E5879;
+  transform: translateX(4px);
+}
+
+.main-menu-item:hover::after {
+  width: 100%;
+}
+
+/* 현재 선택 메뉴 */
+.main-menu-item.active {
+  color: #3E5879;
+  font-weight: 700;
+}
+
+.main-menu-item.active::after {
+  width: 100%;
+}
+
+.profile-name {
+  font-size: clamp(22px, 2.2vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #3E5879;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: 0.3s ease;
+}

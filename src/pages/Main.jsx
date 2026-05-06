@@ -1,31 +1,29 @@
 import "../App.css";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import profileImg from "../assets/profileImg.png"
 
 const Main = () => {
-    const [isMobile, setIsMobile] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [isMobile, setIsMobile] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 1000)
-        }
+            setIsMobile(window.innerWidth <= 1100);
+        };
 
-        handleResize()
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
-
     return (
-        <div className="container">
-            <div className="glow glow1"></div>
-            <div className="glow glow2"></div>
+        <div className="main-container">
+            <div className="main-glow main-glow1"></div>
+            <div className="main-glow main-glow2"></div>
             {isMobile && (
-                <div className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
-                    ☰
-                </div>
+                <div className="main-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>☰</div>
             )}
-
-            <div className={`side-menu ${menuOpen ? "open" : ""}`}>
+            <div className={`main-side-menu ${menuOpen ? "open" : ""}`}>
                 <ul>
                     <li>Introduction</li>
                     <li>Skill</li>
@@ -33,25 +31,30 @@ const Main = () => {
                     <li>Contact</li>
                 </ul>
             </div>
-
-            {/* 왼쪽 */}
-            <div className="left">
-                <div className="left-content">
+            <div className="main-left">
+                <div className="main-left-content">
                     <h1>Introduction</h1>
-                    <br/>
+
                     <p>안녕하세요</p>
                     <p>저는 풀스택 개발자</p>
                     <p>신동준 입니다</p>
                 </div>
             </div>
-
-            {/* 오른쪽 */}
-            <div className={`right ${isMobile ? "hide" : ""}`}>
-                <div className="main-content">
-                    <h1>메인 화면입니다</h1>
+            <div className={`main-right ${isMobile ? "hide" : ""}`}>
+                <div className="main-right-content">
+                    <div className="profile-wrap">
+                        <img src={profileImg} alt="프로필" className="profile-img"/>
+                    </div>
+                    <h1 className="profile-name">Shin Dong June</h1>
+                    <div className="main-menu-list">
+                        <div className="main-menu-item active">메뉴1</div>
+                        <div className="main-menu-item">메뉴2</div>
+                        <div className="main-menu-item">메뉴3</div>
+                        <div className="main-menu-item">메뉴4</div>
+                        <div className="main-menu-item">메뉴5</div>
+                    </div>
                 </div>
             </div>
-
         </div>
     );
 };
