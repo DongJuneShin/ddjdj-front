@@ -25,10 +25,11 @@ const Main = () => {
             )}
             <div className={`main-side-menu ${menuOpen ? "open" : ""}`}>
                 <ul>
-                    <li>Introduction</li>
-                    <li>Skill</li>
-                    <li>Portfolio</li>
-                    <li>Contact</li>
+                    <li>소개</li>
+                    <li>학력</li>
+                    <li>기술</li>
+                    <li>자격</li>
+                    <li>정보</li>
                 </ul>
             </div>
             <div className="main-left">
@@ -47,11 +48,11 @@ const Main = () => {
                     </div>
                     <h1 className="profile-name">Shin Dong June</h1>
                     <div className="main-menu-list">
-                        <div className="main-menu-item active">메뉴1</div>
-                        <div className="main-menu-item">메뉴2</div>
-                        <div className="main-menu-item">메뉴3</div>
-                        <div className="main-menu-item">메뉴4</div>
-                        <div className="main-menu-item">메뉴5</div>
+                        <div className="main-menu-item active">인적사항</div>
+                        <div className="main-menu-item">학력</div>
+                        <div className="main-menu-item">기술</div>
+                        <div className="main-menu-item">자격</div>
+                        <div className="main-menu-item">정보</div>
                     </div>
                 </div>
             </div>

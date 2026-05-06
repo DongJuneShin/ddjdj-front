@@ -270,6 +270,7 @@ html, body, #root {
   z-index: 1;
 
   transition:
+
           transform 0.4s ease,
           opacity 0.4s ease;
 }
@@ -388,25 +389,18 @@ html, body, #root {
 
   .main-side-menu {
     display: flex;
-
     position: fixed;
     top: 0;
-    right: -280px;
-
-    width: 280px;
+    right: -100%;
+    width: clamp(180px, 24vw, 280px);
     height: 100vh;
-
-    background: #10263d;
-
+    background: rgba(16, 38, 61, 0.96);
+    backdrop-filter: blur(12px);
     transition: right 0.4s ease;
-
     z-index: 99;
-
     justify-content: center;
     align-items: center;
-
-    box-shadow:
-            -10px 0 30px rgba(0,0,0,0.25);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.25);
   }
 
   .main-side-menu.open {
